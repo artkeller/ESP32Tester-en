@@ -1,4 +1,4 @@
-//DHT部分
+//DHT Section
 #include <DHT.h>
 
 String dhtInfo = "";
@@ -11,11 +11,11 @@ void getDHT(){
   float humidity    = dht.readHumidity();
   float temperature = dht.readTemperature();
 
-  // 检查读取是否成功
+  // Check if read was successful
   if (isnan(humidity) || isnan(temperature)) {
-    dhtInfo= "无法从DHT传感器读取数据！";
+    dhtInfo= "Failed to read from DHT sensor!";
   }else{
-    dhtInfo = "温度: " + String(temperature) + " °C, 湿度: " + String(humidity) + " %";
+    dhtInfo = "Temperature: " + String(temperature) + " °C, Humidity: " + String(humidity) + " %";
   }
   Serial.println(dhtInfo);
 }
