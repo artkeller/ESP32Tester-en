@@ -13,10 +13,10 @@
 #include <PubSubClient.h>
 
 
-/*测试部分*/
-/*测试部分-结束*/
+/*Test section*/
+/*Test section - end*/
 
-//自定义lib-----------------------------------
+//Custom libraries-----------------------------------
 #include "lib/ws2812.h"
 #include "lib/sr04.h"
 #include "lib/switch.h"
@@ -24,10 +24,10 @@
 #include "lib/dht.h"
 #include "lib/ir.h"
 
-//变量
+//Variables
 #include "common.h"
 
-//函数
+//Functions
 #include "func.h"
 //-------------------------------------------
 
@@ -39,14 +39,14 @@
 void setup() {
   Serial.begin(intSerial);  
 
-  /*测试部分*/
-  /*测试部分-结束*/
+  /*Test section*/
+  /*Test section - end*/
 
-  //初始化SPIFFS
+  //Initialize SPIFFS
   initFS();
 
   //---------------------------
-  //从FS读取内容 系统配置
+  //Read content from FS - system configuration
   File f = SPIFFS.open(sysPath, "r");
   strTmp = f.readString();
 
@@ -54,14 +54,14 @@ void setup() {
   int i = 0;
   for (i = 0; i < strTmp.length(); i++) {
       if (strTmp.charAt(i) == '|') {
-          count++; // 遇到分隔符，计数器递增
+          count++; // Encounter separator, increment counter
       }
   }  
   
   char charArray[strTmp.length() + 1];
   strTmp.toCharArray(charArray, sizeof(charArray));
 
-  // 使用strtok函数将字符串按照 | 分割，并存储到变量中
+  // Use strtok to split string by | and store in variables
   char* token = strtok(charArray, "|");
   char* tokens[count];
   
@@ -89,7 +89,7 @@ void setup() {
   //
   server.serveStatic("/", SPIFFS, "/");
 
-  //搜索网络
+  //Scan for network
   Serial.println("Search Wifi");
   ///////////////
   if(initWiFi()) {
@@ -102,7 +102,7 @@ void setup() {
     server.on("/auto", HTTP_GET, [](AsyncWebServerRequest *request) {
       sinfo("begin ota", OTAFSURL);
 
-      ws.textAll("开始 OTA");
+      ws.textAll("Start OTA");
       
       ota = "1";
       writeFile(SPIFFS, "sys");
@@ -113,7 +113,7 @@ void setup() {
     server.on("/autofs", HTTP_GET, [](AsyncWebServerRequest *request) {
       sinfo("begin ota fs", OTAFSURL);
 
-      ws.textAll("开始 OTA FS");
+      ws.textAll("Start OTA FS");
       
       ota = "2";
       writeFile(SPIFFS, "sys");
@@ -121,14 +121,14 @@ void setup() {
       ESP.restart();
     });
     
-    // 重启
+    // Reboot
     server.on("/reboot", HTTP_GET, [](AsyncWebServerRequest *request) {
-      request->send(200, "text/html", "<script>alert('重启中，请5秒后刷新当前页面。');</script>");
+      request->send(200, "text/html", "<script>alert('Restarting, please refresh page after 5 seconds.');</script>");
       
       ESP.restart();
     });
     
-    // 重置
+    // Reset
     server.on("/reset", HTTP_GET, [](AsyncWebServerRequest *request) {
       ssid = "";
       writeFile(SPIFFS, "sys");
@@ -138,7 +138,7 @@ void setup() {
     });
 
     server.on("/otahost", HTTP_POST, [](AsyncWebServerRequest *request){
-      // 获取提交表单的内容
+      // Get submitted form content
       if (request->hasArg("otahost")) {
         otahost = request->arg("otahost");
         writeFile(SPIFFS, "sys");
@@ -146,10 +146,10 @@ void setup() {
         sinfo("otahost: ", otahost);
       }
   
-      request->send(200, "text/html",  "<script>alert('修改OTA地址完毕，可以点击重启之后，看看是否生效。')</script>");
+      request->send(200, "text/html",  "<script>alert('OTA host modified. You can restart and check if it works.')</script>");
     });
 
-    //DHT11通过http请求
+    //DHT11 via HTTP request
     server.on("/dht", HTTP_GET, [](AsyncWebServerRequest *request){
       dhtRun = 1;
 
@@ -164,12 +164,12 @@ void setup() {
       //request->send(200, "text/plain", dhtInfo);
     });
 
-    //DHT11通过http请求
+    //OLED via HTTP request
     server.on("/oled", HTTP_GET, [](AsyncWebServerRequest *request){
       oledRun = 1;
 
-      //跨域
-      AsyncWebServerResponse *response = request->beginResponse(200, "text/plain", "看看是否显示");
+      //CORS headers
+      AsyncWebServerResponse *response = request->beginResponse(200, "text/plain", "Check if display works");
       response->addHeader("Access-Control-Allow-Origin", "*");
       response->addHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
       response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
@@ -182,7 +182,7 @@ void setup() {
     canTest = 1;
 
     ///////////
-    // 初始化OTA
+    // Initialize OTA
     
     if(ota == "1") updateOTA();
     if(ota == "2") updateOTAFS();
@@ -196,12 +196,12 @@ void setup() {
     sinfo(BOARD, VERSION);
 
     /////////////
-    //搜索到
-    Serial.println("Search Wifi Succ");
+    //Wifi found
+    Serial.println("Search Wifi Success");
   } else {
     sinfo("Setting AP (Access Point)");
     
-    //ap名
+    //AP name
     strTmp = "ZJY-" + String(ESP.getEfuseMac());
     WiFi.softAP(strTmp, "123456");
 
@@ -209,7 +209,7 @@ void setup() {
       request->send(SPIFFS, "/wifimanager.html", "text/html");
     });
 
-    //直连
+    //Direct connection
     server.on("/c", HTTP_GET, [](AsyncWebServerRequest *request) {
       request->send(SPIFFS, "/index.html", "text/html", false, processor);
     });    
@@ -224,7 +224,7 @@ void setup() {
       if (request->hasArg("checkid")) checkid = request->arg("checkid");
       writeFile(SPIFFS, "sys");
 
-      request->send(200, "text/html",  "<html><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/><body><h1>写入完毕，重启中，修改后的IP为：<a href='http://"+ip+"'>"+ip+" 点击直达</a></h1></body></html>");
+      request->send(200, "text/html",  "<html><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/><body><h1>Write completed, restarting. Modified IP: <a href='http://"+ip+"'>"+ip+" Click to access</a></h1></body></html>");
 
       restart = true;
     });
@@ -232,30 +232,30 @@ void setup() {
     server.begin();
   }
 
-  ws.onEvent(onEventHandle); // 绑定回调函数
-  server.addHandler(&ws);    // 将WebSocket添加到服务器中
-  server.on("/ws", HTTP_GET, handleRoot); //注册链接"/"与对应回调函数
-  server.begin(); //启动服务器
+  ws.onEvent(onEventHandle); // Bind callback function
+  server.addHandler(&ws);    // Add WebSocket to server
+  server.on("/ws", HTTP_GET, handleRoot); //Register route "/ws" with corresponding callback function
+  server.begin(); //Start server
   delay(1000);
-  ws.textAll("websocket server On"); // 向所有建立连接的客户端发送数据
+  ws.textAll("websocket server On"); // Send data to all connected clients
 
   //
-  irrecv.enableIRIn(); // 启动红外接收器
+  irrecv.enableIRIn(); // Start infrared receiver
 
 
 }
 
 void loop() {
-  ws.cleanupClients();     // 关闭过多的WebSocket连接以节省资源
+  ws.cleanupClients();     // Clean up excessive WebSocket connections to save resources
 
   if (restart){
     delay(5000);
     ESP.restart();
   }
   
-  //正式运行这里会执行的
+  //This will execute during normal operation
   if(canTest==1){
-    //Serial.println("runing version 1.0.0");
+    //Serial.println("running version 1.0.0");
     delay(1000);
   }
 
@@ -269,12 +269,12 @@ void loop() {
     oledRun = 0;
   }
 
-  /*测试开始*/
-  if (irrecv.decode(&results)) { // 如果接收到了红外信号
-    Serial.println(results.value, HEX); // 输出红外信号的值（16 进制格式）
-    irrecv.resume(); // 继续接收下一个红外信号
+  /*Test start*/
+  if (irrecv.decode(&results)) { // If infrared signal received
+    Serial.println(results.value, HEX); // Output infrared signal value (hex format)
+    irrecv.resume(); // Continue receiving next infrared signal
 
-    ws.textAll("按键编码:"+String(results.value));
+    ws.textAll("Button code:"+String(results.value));
   }
-  /*测试结束*/
+  /*Test end*/
 }
