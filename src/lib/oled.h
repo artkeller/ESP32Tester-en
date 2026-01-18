@@ -1,3 +1,4 @@
+```cpp
 //OLED
 #include <U8g2lib.h>
 int    oledRun = 0;
@@ -7,21 +8,21 @@ void oledTest(String pinSCL, String pinSDA) {
 
   u8g2.begin();
 
-  u8g2.clearBuffer();  // 清空缓冲区
+  u8g2.clearBuffer();  // Clear buffer
 
-  u8g2.setFont(u8g2_font_6x10_tf);  // 设置字体和字号
+  u8g2.setFont(u8g2_font_6x10_tf);  // Set font and size
 
-  // 绘制第一行文本
+  // Draw first line text
   u8g2.setCursor(0, 10);
-  u8g2.print("第一行文本");
+  u8g2.print("First line text");
 
-  // 绘制第二行文本
+  // Draw second line text
   u8g2.setCursor(0, 20);
-  u8g2.print("第二行文本");
+  u8g2.print("Second line text");
 
-  u8g2.sendBuffer();  // 将缓冲区内容发送到显示屏
+  u8g2.sendBuffer();  // Send buffer content to display
 
-  //delay(1000);  // 延迟1秒钟
+  //delay(1000);  // Delay 1 second
 
 
 } 
@@ -35,10 +36,11 @@ void getOLED(){
   u8g2.setFontPosTop();
   u8g2.setFont(u8g2_font_wqy12_t_gb2312a);
   
-  u8g2.drawUTF8(0, 1,  "春种一粒粟,秋收万颗子");
-  u8g2.drawUTF8(0, 13, "寒来暑往,不负韶华。");
+  u8g2.drawUTF8(0, 1,  "Sow a grain of millet in spring, harvest ten thousand seeds in autumn");
+  u8g2.drawUTF8(0, 13, "Through cold and heat, live up to the glorious years.");
   u8g2.drawUTF8(0, 25, "");
-  u8g2.drawUTF8(0, 49, "    中技云第十波    ");
+  u8g2.drawUTF8(0, 49, "    ZhongJiYun Wave 10    ");
 
-  u8g2.sendBuffer();  // 将缓冲区内容发送到显示屏
+  u8g2.sendBuffer();  // Send buffer content to display
 }
+```
