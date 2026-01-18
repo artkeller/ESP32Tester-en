@@ -9,48 +9,48 @@
 </head>
 <body>
   <div class="topnav">
-    <h1>配置网络</h1>
+    <h1>Network Configuration</h1>
   </div>
   <div class="content">
     <div class="card-grid">
       <div class="card">
         <form action="/" method="POST">
           <p align="right">
-            <label for="ssid">Wifi名</label>
+            <label for="ssid">WiFi Name</label>
             <input type="text" id ="ssid" name="ssid" value="Mars4"><br>
-            <label for="pass">密码</label>
+            <label for="pass">Password</label>
             <input type="text" id ="pass" name="pass" value="Zerolone"><br>
             
             <!--
-            设备IP设置
-            <input type="radio" id="ipman"  name="gen" value="1" checked><label for="ipman">手动</label>
-            <input type="radio" id="ipdhcp" name="gen" value="0"><label for="ipdhcp">DHCP自动(暂无)</label>
+            Device IP Settings
+            <input type="radio" id="ipman"  name="gen" value="1" checked><label for="ipman">Manual</label>
+            <input type="radio" id="ipdhcp" name="gen" value="0"><label for="ipdhcp">DHCP Auto (Not Available)</label>
             <br>
             -->
             
             <span id="ipmanshow">
-            <label for="ip">设定IP</label>
+            <label for="ip">Set IP</label>
             <input type="text" id ="ip" name="ip" value="192.168.123.123"><br>
-            <label for="gateway">网关IP</label>
+            <label for="gateway">Gateway IP</label>
             <input type="text" id ="gateway" name="gateway" value="192.168.123.1"><br>
             </span>
-            <label for="checkip">编号</label>
+            <label for="checkip">ID</label>
             <input type="text" id ="checkid" name="checkid" value="s124"><br>
             
-            <input type ="submit" value ="提交">
+            <input type ="submit" value ="Submit">
           </p>
         </form>
       </div>
     </div>
   </div>
-  中技云第十波
+  (ZhongJiYun Wave 10...)
 <script language="javascript">
-      // 获取按钮和要隐藏的元素
+      // Get buttons and element to hide
       var btnShow  = document.getElementById('ipman');
       var btnHide  = document.getElementById('ipdhcp');
       var element = document.getElementById('ipmanshow');
 
-      // 绑定点击事件
+      // Bind click events
       btnShow.addEventListener('click', function() {
           element.style.display = 'block';
       });
