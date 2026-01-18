@@ -1,4 +1,3 @@
-```cpp
 //Debug display
 void sinfo(String str, String strInfo=""){
   if (SHOWINFO == 1) {
@@ -275,4 +274,3 @@ void onEventHandle(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEven
     client->ping(); 
   }
 }
-```
