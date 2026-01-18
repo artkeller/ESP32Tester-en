@@ -10,10 +10,10 @@ void ws2812Test(String pin, String num, String color, String bright) {
   if(color=="4"){r=0;g=0;b=0;}
 
 /**
-紫色：RGB(128, 0, 128)
-黄色：RGB(255, 255, 0)
-青色：RGB(0, 255, 255)
-橙色：RGB(255, 165, 0)
+Purple: RGB(128, 0, 128)
+Yellow: RGB(255, 255, 0)
+Cyan: RGB(0, 255, 255)
+Orange: RGB(255, 165, 0)
 /**/
   if(color=="5") {r=128;g=0;b=128;};
   if(color=="6") {r=255;g=255;b=0;};
@@ -31,4 +31,4 @@ void ws2812Test(String pin, String num, String color, String bright) {
     strip.setPixelColor(i, strip.Color(r, g, b)); // Red color
   }
   strip.show();
-} 
+}
