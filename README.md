@@ -1,1 +1,1 @@
-通过网页来测试Esp32的各个模块是否正常。与ESP8266Tester相同
+Test the functionality of various ESP32 modules via a web page. Similar to the ESP8266Tester.
