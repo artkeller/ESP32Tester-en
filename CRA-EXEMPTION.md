@@ -1,40 +1,46 @@
-# CRA Exemption Statement (EU Cyber Resilience Act)
+# CRA Exemption Statement
 
-**As of:** January 2026
-
-This repository contains purely open-source software (OSS) that is **not commercially distributed**.
-
-- No sale of the product
-- No premium features or subscriptions
-- No recurring payments from companies for access
-- No monetization beyond the repository
-
-According to **Article 3(22)** and the recitals of the Cyber Resilience Act (Regulation (EU) 2024/2847), the project is therefore **not considered “made available on the market”** within the meaning of the CRA. 
-→ This project is **CRA-exempt** (no manufacturer obligations, no CE marking, no formal conformity assessment required).
-
-**Note:** If the project is integrated into a commercial product or monetized in the future, the **manufacturer/distributor** will assume the CRA obligations. 
-We recommend that downstream users check this.
-
-Further information: [EU CRA Text](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+This document explains why this repository is considered **CRA-exempt** under the EU Cyber Resilience Act (Regulation (EU) 2024/2847).
 
 ---
 
-# CRA-Exemption-Erklärung (EU Cyber Resilience Act)
+## 1. Legal Basis
 
-**Stand:** Januar 2026
+According to **Article 3(22)** and the **recitals of the Cyber Resilience Act**, the project is **not considered “made available on the market”** within the meaning of the CRA.  
 
-Dieses Repository enthält reines Open-Source-Software (OSS), das **nicht kommerziell vertrieben** wird.
+> Therefore, this project is CRA-exempt:  
+> - No manufacturer obligations  
+> - No CE marking required  
+> - No formal conformity assessment required
 
-- Kein Verkauf des Produkts
-- Keine Premium-Features oder Abonnements
-- Keine wiederkehrenden Zahlungen von Unternehmen für den Zugriff
-- Keine Monetarisierung über das Repository hinaus
+---
 
-Gemäß **Artikel 3(22)** und den Erwägungsgründen des Cyber Resilience Act (Regulation (EU) 2024/2847) gilt das Projekt daher **nicht als „auf dem Markt bereitgestellt“** im Sinne des CRA.  
-→ Dieses Projekt ist **CRA-exempt** (keine Herstellerpflichten, keine CE-Kennzeichnung, keine formelle Konformitätsbewertung erforderlich).
+## 2. Project Status
 
-**Hinweis:** Sollte das Projekt in Zukunft in ein kommerzielles Produkt integriert oder monetarisiert werden, übernimmt der **Manufacturer/Distributor** die CRA-Pflichten.  
-Wir empfehlen Downstream-Nutzern, dies zu prüfen.
+This repository is:
 
-Weitere Infos: [EU CRA Text](https://eur-lex.europa.eu/eli/reg/2024/2847/oj)
+- Distributed fully open-source  
+- Maintained by an **individual contributor** with no commercial intent  
+- Free to use, modify, and redistribute under the license terms  
 
+There are **no sales, paid services, or monetized offerings** associated with this project.
+
+---
+
+## 3. Future Considerations
+
+If this project is **integrated into a commercial product** or monetized in the future, the **manufacturer or distributor** will assume the CRA obligations.  
+
+**Recommendation for downstream users:**  
+- Verify compliance obligations when using this library in a commercial product.
+
+---
+
+## 4. References
+
+- [EU Cyber Resilience Act – Open Source Guidance](https://digital-strategy.ec.europa.eu/en/policies/cra-open-source)  
+- [Regulation (EU) 2024/2847](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R2847)
+
+---
+
+> This statement documents the exemption status for audit, transparency, and clarity for users and contributors.
